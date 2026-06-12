@@ -4,6 +4,8 @@ AI-powered content discovery and SEO blog writer for **Odoo 19**. Two
 autonomous AI agents monitor the news from your keywords and draft
 SEO-optimized blog articles, fully integrated with Odoo's Website Blog.
 
+> 🎥 **Demo video:** https://drive.google.com/drive/folders/1iz6obS2ibnniCNehkiN0uiKQNBhCRLEM
+
 ---
 
 ## Overview
