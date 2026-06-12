@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="demo_keyword_generative_ai" model="ai.blog.keyword">
+        <field name="name">IA générative</field>
+        <field name="note">Actualités sur les modèles génératifs (texte, image, audio, vidéo).</field>
+    </record>
+
+    <record id="demo_keyword_ai_agents" model="ai.blog.keyword">
+        <field name="name">Agents IA</field>
+        <field name="note">Systèmes d'IA autonomes capables d'exécuter des tâches multi-étapes.</field>
+    </record>
+
+    <record id="demo_keyword_mcp" model="ai.blog.keyword">
+        <field name="name">Model Context Protocol</field>
+        <field name="note">Standard ouvert pour connecter les modèles d'IA aux outils et données externes.</field>
+    </record>
+
+    <record id="demo_keyword_ai_regulation" model="ai.blog.keyword">
+        <field name="name">Régulation de l'IA</field>
+        <field name="note">AI Act européen, lois, éthique et gouvernance de l'intelligence artificielle.</field>
+    </record>
+
+    <record id="demo_keyword_open_llm" model="ai.blog.keyword">
+        <field name="name">LLM open source</field>
+        <field name="note">Modèles de langage open source (Llama, Mistral, Qwen, etc.).</field>
+    </record>
+
+    <record id="demo_keyword_ai_security" model="ai.blog.keyword">
+        <field name="name">IA et cybersécurité</field>
+        <field name="note">Usages de l'IA pour la sécurité et nouvelles menaces liées à l'IA.</field>
+    </record>
+
+</odoo>

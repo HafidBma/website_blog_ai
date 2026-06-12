@@ -4,18 +4,10 @@
     'category': 'Website/Blog',
     'summary': 'AI Content Discovery & Blog Writer - Sniffer and Rédacteur agents',
     'description': """
-Website Blog AI
-===============
-
-Two autonomous AI agents for Odoo's Website Blog:
-
-* **Sniffer** - runs on a schedule, performs real web searches based on
-  user-defined keywords, and generates article proposals (title, summary,
-  context, editorial angle, sources, relevance score) stored for human
-  validation.
-* **Rédacteur** - after a proposal is validated, generates a complete
-  SEO-optimized French blog article, stored as an unpublished post for
-  review and manual publication.
+Two autonomous AI agents for Odoo's Website Blog. The Sniffer monitors the news
+from user-defined keywords and creates blog proposals pending validation. The
+Rédacteur turns a validated proposal into a complete SEO-optimized article,
+stored as an unpublished post for manual publication. See README.md for details.
 """,
     'author': 'Hafid',
     'website': 'https://github.com/HafidBma/website_blog_ai',
@@ -28,6 +20,9 @@ Two autonomous AI agents for Odoo's Website Blog:
         'views/ai_blog_proposal_views.xml',
         'views/ai_sniffer_views.xml',
         'views/res_config_settings_views.xml',
+    ],
+    'demo': [
+        'demo/demo_data.xml',
     ],
     'installable': True,
     'application': True,
