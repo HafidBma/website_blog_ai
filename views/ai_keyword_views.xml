@@ -78,6 +78,12 @@
               parent="menu_blog_ai_root"
               sequence="20"/>
 
+    <menuitem id="menu_blog_ai_posts"
+              name="Blog Posts"
+              parent="menu_blog_ai_native"
+              action="website_blog.action_blog_post"
+              sequence="5"/>
+
     <menuitem id="menu_blog_ai_blogs"
               name="Blogs"
               parent="menu_blog_ai_native"

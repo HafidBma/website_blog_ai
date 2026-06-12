@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ai_blog_keyword_user,ai.blog.keyword.user,model_ai_blog_keyword,base.group_user,1,1,1,1
+access_ai_blog_proposal_user,ai.blog.proposal.user,model_ai_blog_proposal,base.group_user,1,1,1,1

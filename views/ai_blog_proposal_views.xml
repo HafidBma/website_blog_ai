@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_ai_blog_proposal_list" model="ir.ui.view">
+        <field name="name">ai.blog.proposal.list</field>
+        <field name="model">ai.blog.proposal</field>
+        <field name="arch" type="xml">
+            <list string="Proposals" decoration-muted="state == 'rejected'">
+                <field name="suggested_title"/>
+                <field name="keyword_id"/>
+                <field name="relevance_score" widget="float" optional="show"/>
+                <field name="create_date" optional="hide"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'validated'"
+                       decoration-success="state == 'generated'"
+                       decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ai_blog_proposal_form" model="ir.ui.view">
+        <field name="name">ai.blog.proposal.form</field>
+        <field name="model">ai.blog.proposal</field>
+        <field name="arch" type="xml">
+            <form string="Blog Proposal">
+                <header>
+                    <button name="action_validate" string="Validate"
+                            type="object" class="btn-primary"
+                            invisible="state != 'new'"/>
+                    <button name="action_reject" string="Reject"
+                            type="object"
+                            invisible="state not in ('new', 'validated')"/>
+                    <button name="action_reset_to_new" string="Reset to New"
+                            type="object"
+                            invisible="state == 'new'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="new,validated,generated"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="suggested_title"/>
+                        <h1>
+                            <field name="suggested_title"
+                                   placeholder="Suggested title..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="keyword_id"/>
+                        </group>
+                        <group>
+                            <field name="relevance_score"/>
+                        </group>
+                    </group>
+                    <group string="Summary">
+                        <field name="summary" nolabel="1"/>
+                    </group>
+                    <group string="Identified Context">
+                        <field name="context" nolabel="1"/>
+                    </group>
+                    <group string="Recommended Editorial Angle">
+                        <field name="editorial_angle" nolabel="1"/>
+                    </group>
+                    <group string="Potential Sources">
+                        <field name="sources" nolabel="1"/>
+                    </group>
+                    <group string="Selection Justification">
+                        <field name="justification" nolabel="1"/>
+                    </group>
+                    <group string="Additional Instructions">
+                        <field name="extra_instructions" nolabel="1"
+                               placeholder="Optional instructions for the writer agent..."/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ai_blog_proposal_search" model="ir.ui.view">
+        <field name="name">ai.blog.proposal.search</field>
+        <field name="model">ai.blog.proposal</field>
+        <field name="arch" type="xml">
+            <search string="Proposals">
+                <field name="suggested_title"/>
+                <field name="keyword_id"/>
+                <filter name="new" string="New"
+                        domain="[('state', '=', 'new')]"/>
+                <filter name="validated" string="Validated"
+                        domain="[('state', '=', 'validated')]"/>
+                <filter name="generated" string="Generated"
+                        domain="[('state', '=', 'generated')]"/>
+                <separator/>
+                <filter name="hide_rejected" string="Hide Rejected"
+                        domain="[('state', '!=', 'rejected')]"/>
+                <group>
+                    <filter name="group_state" string="Status"
+                            domain="[]" context="{'group_by': 'state'}"/>
+                    <filter name="group_keyword" string="Keyword"
+                            domain="[]" context="{'group_by': 'keyword_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ai_blog_proposal" model="ir.actions.act_window">
+        <field name="name">Proposals</field>
+        <field name="res_model">ai.blog.proposal</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_hide_rejected': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No proposals yet
+            </p>
+            <p>
+                The Sniffer agent creates topic proposals here based on your
+                keywords. Validate one to let the Rédacteur agent write the
+                article.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_ai_blog_proposal"
+              name="Proposals"
+              parent="menu_blog_ai_section"
+              action="action_ai_blog_proposal"
+              sequence="5"/>
+
+</odoo>
