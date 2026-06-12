@@ -57,17 +57,43 @@
     <!-- Root menu -->
     <menuitem id="menu_blog_ai_root"
               name="Blog AI"
+              web_icon="website_blog_ai,static/description/icon.png"
               sequence="90"/>
 
-    <menuitem id="menu_blog_ai_configuration"
-              name="Configuration"
+    <!-- AI Blog: the module's own records -->
+    <menuitem id="menu_blog_ai_section"
+              name="AI Blog"
               parent="menu_blog_ai_root"
-              sequence="90"/>
+              sequence="10"/>
 
     <menuitem id="menu_ai_blog_keyword"
               name="Keywords"
-              parent="menu_blog_ai_configuration"
+              parent="menu_blog_ai_section"
               action="action_ai_blog_keyword"
               sequence="10"/>
+
+    <!-- Odoo's Blog: convenience access to native Website Blog records -->
+    <menuitem id="menu_blog_ai_native"
+              name="Blog"
+              parent="menu_blog_ai_root"
+              sequence="20"/>
+
+    <menuitem id="menu_blog_ai_blogs"
+              name="Blogs"
+              parent="menu_blog_ai_native"
+              action="website_blog.action_blog_blog"
+              sequence="10"/>
+
+    <menuitem id="menu_blog_ai_tags"
+              name="Tags"
+              parent="menu_blog_ai_native"
+              action="website_blog.action_tags"
+              sequence="20"/>
+
+    <menuitem id="menu_blog_ai_tag_categories"
+              name="Tag Categories"
+              parent="menu_blog_ai_native"
+              action="website_blog.action_tag_category"
+              sequence="30"/>
 
 </odoo>
