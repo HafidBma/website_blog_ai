@@ -1,4 +1,4 @@
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 
 
 class AiBlogProposal(models.Model):
@@ -64,7 +64,13 @@ class AiBlogProposal(models.Model):
         default='new',
         required=True,
         tracking=True,
+        group_expand='_expand_states',
     )
+
+    @api.model
+    def _expand_states(self, states, domain):
+        # Keep the kanban columns in workflow order (not alphabetical).
+        return [key for key, _label in self._fields['state'].selection]
     blog_post_id = fields.Many2one(
         'blog.post',
         string='Generated Article',
