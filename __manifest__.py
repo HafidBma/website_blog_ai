@@ -25,6 +25,7 @@ Two autonomous AI agents for Odoo's Website Blog:
         'security/ir.model.access.csv',
         'views/ai_keyword_views.xml',
         'views/ai_blog_proposal_views.xml',
+        'views/res_config_settings_views.xml',
     ],
     'installable': True,
     'application': True,

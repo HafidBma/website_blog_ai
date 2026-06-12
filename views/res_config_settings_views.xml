@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.blog.ai</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app data-string="Blog AI" string="Blog AI" name="website_blog_ai">
+                    <block title="AI Provider" name="blog_ai_provider">
+                        <setting string="Provider"
+                                 help="AI vendor used by the Sniffer and Rédacteur agents.">
+                            <field name="ai_provider"/>
+                        </setting>
+                        <setting string="Request Timeout"
+                                 help="Maximum time to wait for an AI response, in seconds.">
+                            <field name="ai_timeout"/>
+                        </setting>
+                    </block>
+                    <block title="Gemini" name="blog_ai_gemini"
+                           invisible="ai_provider != 'gemini'">
+                        <setting string="API Key"
+                                 help="Your Google Gemini API key.">
+                            <field name="gemini_api_key" password="True"/>
+                            <div class="mt8">
+                                <button name="action_test_ai_connection"
+                                        type="object"
+                                        string="Test Connection"
+                                        class="btn-secondary"/>
+                            </div>
+                        </setting>
+                        <setting string="Model"
+                                 help="Model name, e.g. gemini-flash-latest or gemini-2.0-flash-latest.">
+                            <field name="gemini_model"/>
+                        </setting>
+                        <setting string="API Base URL"
+                                 help="Endpoint base, e.g. for a proxy or a different API version.">
+                            <field name="gemini_base_url"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_blog_ai_config_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'website_blog_ai'}</field>
+    </record>
+
+    <menuitem id="menu_blog_ai_configuration"
+              name="Configuration"
+              parent="menu_blog_ai_root"
+              sequence="90"/>
+
+    <menuitem id="menu_blog_ai_settings"
+              name="Settings"
+              parent="menu_blog_ai_configuration"
+              action="action_blog_ai_config_settings"
+              sequence="20"/>
+
+</odoo>
