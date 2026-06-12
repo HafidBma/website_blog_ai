@@ -179,9 +179,12 @@ class AiSniffer(models.AbstractModel):
         name = (raw_keyword or '').strip().lower()
         if name in kw_by_name:
             return kw_by_name[name].id
-        for kw_name, kw in kw_by_name.items():
-            if kw_name and (kw_name in name or name in kw_name):
-                return kw.id
+        # Only attempt a contains-match for a non-empty name, otherwise an
+        # empty string would match every keyword.
+        if name:
+            for kw_name, kw in kw_by_name.items():
+                if kw_name in name or name in kw_name:
+                    return kw.id
         if len(kw_by_name) == 1:
             return next(iter(kw_by_name.values())).id
         return False
