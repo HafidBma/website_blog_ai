@@ -39,6 +39,18 @@
                             <field name="gemini_base_url"/>
                         </setting>
                     </block>
+                    <block title="Sniffer Agent" name="blog_ai_sniffer">
+                        <setting string="Monitoring Frequency"
+                                 help="How often the Sniffer agent automatically monitors the news.">
+                            <span class="o_form_label">Run every</span>
+                            <field name="sniffer_interval_days" class="oe_inline"/>
+                            <span class="o_form_label">day(s)</span>
+                        </setting>
+                        <setting string="Proposals per Run"
+                                 help="Maximum number of topic proposals created on each run.">
+                            <field name="sniffer_max_proposals"/>
+                        </setting>
+                    </block>
                 </app>
             </xpath>
         </field>

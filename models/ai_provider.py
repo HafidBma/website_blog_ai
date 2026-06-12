@@ -15,7 +15,7 @@ PARAM_DEFAULTS = {
     'website_blog_ai.ai_timeout': '120',
     'website_blog_ai.gemini_base_url':
         'https://generativelanguage.googleapis.com/v1beta/models',
-    'website_blog_ai.gemini_model': 'gemini-flash-latest',
+    'website_blog_ai.gemini_model': 'gemini-2.5-flash',
 }
 
 

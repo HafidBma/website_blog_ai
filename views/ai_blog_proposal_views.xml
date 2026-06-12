@@ -49,28 +49,27 @@
                             <field name="keyword_id"/>
                         </group>
                         <group>
-                            <field name="relevance_score"/>
+                            <label for="relevance_score"/>
+                            <div>
+                                <field name="relevance_score" class="oe_inline"/>
+                                <span class="oe_inline"> / 10</span>
+                            </div>
                         </group>
                     </group>
-                    <group string="Summary">
-                        <field name="summary" nolabel="1"/>
-                    </group>
-                    <group string="Identified Context">
-                        <field name="context" nolabel="1"/>
-                    </group>
-                    <group string="Recommended Editorial Angle">
-                        <field name="editorial_angle" nolabel="1"/>
-                    </group>
-                    <group string="Potential Sources">
-                        <field name="sources" nolabel="1"/>
-                    </group>
-                    <group string="Selection Justification">
-                        <field name="justification" nolabel="1"/>
-                    </group>
-                    <group string="Additional Instructions">
-                        <field name="extra_instructions" nolabel="1"
-                               placeholder="Optional instructions for the writer agent..."/>
-                    </group>
+                    <separator string="Summary"/>
+                    <field name="summary" nolabel="1"
+                           placeholder="Summary of the identified topic..."/>
+                    <separator string="Identified Context"/>
+                    <field name="context" nolabel="1"/>
+                    <separator string="Recommended Editorial Angle"/>
+                    <field name="editorial_angle" nolabel="1"/>
+                    <separator string="Potential Sources"/>
+                    <field name="sources" nolabel="1"/>
+                    <separator string="Selection Justification"/>
+                    <field name="justification" nolabel="1"/>
+                    <separator string="Additional Instructions"/>
+                    <field name="extra_instructions" nolabel="1"
+                           placeholder="Optional instructions for the writer agent..."/>
                 </sheet>
                 <chatter/>
             </form>

@@ -27,7 +27,7 @@ class AiBlogProposal(models.Model):
         string='Recommended Editorial Angle',
         help='Suggested angle for writing the article.',
     )
-    sources = fields.Text(
+    sources = fields.Html(
         string='Potential Sources',
         help='Source URLs found during the web search.',
     )

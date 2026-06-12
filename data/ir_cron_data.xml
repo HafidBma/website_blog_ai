@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ir_cron_sniffer" model="ir.cron">
+            <field name="name">Blog AI: Run Sniffer</field>
+            <field name="model_id" ref="model_ai_sniffer"/>
+            <field name="state">code</field>
+            <field name="code">model.run()</field>
+            <field name="interval_number">7</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+            <field name="nextcall"
+                   eval="(DateTime.now() + timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')"/>
+        </record>
+
+    </data>
+</odoo>

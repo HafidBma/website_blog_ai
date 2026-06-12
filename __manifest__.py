@@ -23,8 +23,10 @@ Two autonomous AI agents for Odoo's Website Blog:
     'depends': ['website_blog'],
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_cron_data.xml',
         'views/ai_keyword_views.xml',
         'views/ai_blog_proposal_views.xml',
+        'views/ai_sniffer_views.xml',
         'views/res_config_settings_views.xml',
     ],
     'installable': True,

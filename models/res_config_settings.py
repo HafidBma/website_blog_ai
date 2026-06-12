@@ -25,13 +25,45 @@ class ResConfigSettings(models.TransientModel):
     gemini_model = fields.Char(
         string='Model',
         config_parameter='website_blog_ai.gemini_model',
-        default='gemini-flash-latest',
+        default='gemini-2.5-flash',
     )
     gemini_base_url = fields.Char(
         string='API Base URL',
         config_parameter='website_blog_ai.gemini_base_url',
         default='https://generativelanguage.googleapis.com/v1beta/models',
     )
+
+    # Sniffer agent settings
+    sniffer_interval_days = fields.Integer(
+        string='Run Every (days)',
+        default=7,
+        help='How often the Sniffer agent monitors the news.',
+    )
+    sniffer_max_proposals = fields.Integer(
+        string='Max Proposals per Run',
+        config_parameter='website_blog_ai.sniffer_max_proposals',
+        default=3,
+    )
+
+    def get_values(self):
+        res = super().get_values()
+        cron = self.env.ref(
+            'website_blog_ai.ir_cron_sniffer', raise_if_not_found=False,
+        )
+        if cron:
+            res['sniffer_interval_days'] = cron.interval_number
+        return res
+
+    def set_values(self):
+        super().set_values()
+        cron = self.env.ref(
+            'website_blog_ai.ir_cron_sniffer', raise_if_not_found=False,
+        )
+        if cron and self.sniffer_interval_days:
+            cron.sudo().write({
+                'interval_number': self.sniffer_interval_days,
+                'interval_type': 'days',
+            })
 
     def action_test_ai_connection(self):
         """Quick round-trip to verify the provider configuration works."""
