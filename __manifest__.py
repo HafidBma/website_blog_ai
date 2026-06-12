@@ -22,6 +22,8 @@ Two autonomous AI agents for Odoo's Website Blog:
     'license': 'LGPL-3',
     'depends': ['website_blog'],
     'data': [
+        'security/ir.model.access.csv',
+        'views/ai_keyword_views.xml',
     ],
     'installable': True,
     'application': True,
